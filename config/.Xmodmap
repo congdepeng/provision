@@ -1,0 +1,26 @@
+clear control
+clear mod4
+
+
+
+!133 is left super, reassign to ctrl left
+keycode 133 = Control_L NoSymbol Control_L
+!134 is right super, reassign to ctrl right
+keycode 134 = Control_R NoSymbol Control_R
+
+! 105 is right control
+keycode 105 = Control_R NoSymbol Control_R
+
+! 37 is left control
+keycode 37 = Control_L NoSymbol Control_L
+
+!reassign right option to Super_R
+keycode 92 = Super_R NoSymbol Super_R
+
+!64 is default alt_l
+keycode  64 = Alt_L Meta_L Alt_L Meta_L
+
+
+add control = Control_L
+add control = Control_R
+
