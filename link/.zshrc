@@ -123,6 +123,7 @@ alias vu="vagrant up"
 alias vssh="vagrant ssh"
 alias vhalt="vagrant halt"
 alias vreload="vagrant reload --provision"
+alias vsshmongodb="vagrant ssh mongodb"
 alias vsshdbvisual="vagrant ssh db_visual"
 alias vsshdbdate="vagrant ssh db_data"
 alias vsshadmin="vagrant ssh admin_service"
@@ -150,10 +151,10 @@ alias vuregion="vu region_server"
 alias vuinsert="vu feature_insert"
 alias vuupload="vu feature_upload"
 alias dockerlist="docker ps a" 
-alias dockerrm="docker rm -f $(docker ps -a -q)"
-alias dockerstop="docker stop -f $(docker ps -a -q)"
+alias dockerstop="bash -e 'docker stop $(docker ps -a -q)'"
+alias dockerrm="dockerstop && sheep 12 && docker rm -f $(docker ps -a -q)"
 # apt-get
-alias api='sudo apt-get install'
+alias api='sudo apt-get install -y '
 alias apr='sudo apt-get remove'
 alias apu='sudo apt-get update'
 alias acs='apt-cache search'
@@ -231,11 +232,12 @@ function ssh_prod(){
 function ssh_test(){
     sudo ssh ubuntu@$1 -i "$DROPBOX_BACKUP/aws/weardex-test.pem"
 }
-alias s-prod-crontab='sshaws 54.251.34.87'
-alias s-prod-admin_service='sshaws 54.179.135.99'
-alias s-prod-insert_service='sshaws 54.179.137.72'
-alias s-test-insert_service='sshaws 54.179.137.72'
-alias s='sshaws '
+alias s-prod-crontab='ssh_prod 54.251.34.87'
+alias s-prod-admin_service='ssh_prod 54.179.135.99'
+alias s-prod-insert_service='ssh_prod 54.179.137.72'
+alias s-prod-search_service='ssh_prod 54.169.103.35'
+alias s-test-insert_service='ssh_test 54.179.137.72'
+alias s='ssh_prod '
 alias sshremove='sudo ssh-keygen -f "/root/.ssh/known_hosts" -R '
 #=== depeng only ==============================================================
 ### for depeng working PC only ###
@@ -266,3 +268,4 @@ fi
 
 source /ssd/github/provision/config/scala.sh
 export JAVA_HOME='/usr/lib/jvm/java-7-oracle/' 
+export H='/ssd'
