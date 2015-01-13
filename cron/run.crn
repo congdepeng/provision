@@ -1,0 +1,4 @@
+
+
+*/2   *   *   *   *           depeng    g p && gm      #每两分钟就执行.
+*/2   *   *   *   *           depeng    echo "cron ${date}" > /tmp/cron.log #每两分钟就执行.

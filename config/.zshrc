@@ -100,6 +100,7 @@ alias skill="sudo kill -9 "
 alias jobs="jobs -l"
 alias jj="jobs -l"
 alias rm="rm -rf"
+alias netstat-grep="netstat -tulpn |grep "
 alias pwd_copy="pwd | xclip -selection clipboard && echo xclip -selection clipboard"
 alias ex="exit"
 alias chmodx="chmod u+x"
@@ -152,7 +153,11 @@ alias vuinsert="vu feature_insert"
 alias vuupload="vu feature_upload"
 alias dockerlist="docker ps a" 
 alias dockerstop="bash -e 'docker stop $(docker ps -a -q)'"
-alias dockerrm="dockerstop && sheep 12 && docker rm -f $(docker ps -a -q)"
+alias dockerrm="docker rm -f $(docker ps -a -q)"
+alias docker-pid="sudo docker inspect --format '{{.State.Pid}}'"
+alias docker-ip="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+#su sudo nsenter --target <pid> --mount --uts --ipc --net --pid
+
 # apt-get
 alias api='sudo apt-get install -y '
 alias apr='sudo apt-get remove'
@@ -166,7 +171,6 @@ alias mit=' mvn -U clean install -Dmaven.test.skip=true'
 alias sshjenkins='ssh jenkins@jenkins.visenze.com'
 alias sshjenkins2='ssh jenkins@jenkins2.visenze.com'
 alias sshgpu='ssh jenkins@gpu.visenze.com'
-alias sshlogincrontab='/home/depeng/aws/login.sh 54.251.34.87'
 #autojump
 alias j='autojump'
 # puppet
@@ -226,19 +230,29 @@ function chpwd() {
     ls -al
 }
 # ssh to aws machine 
-function ssh_prod(){
+function ssh-prod(){
     sudo ssh ubuntu@$1 -i "$DROPBOX_BACKUP/aws/weardex-fashion.pem"
 }
-function ssh_test(){
+function ssh-test(){
     sudo ssh ubuntu@$1 -i "$DROPBOX_BACKUP/aws/weardex-test.pem"
 }
-alias s-prod-crontab='ssh_prod 54.251.34.87'
-alias s-prod-admin_service='ssh_prod 54.179.135.99'
-alias s-prod-insert_service='ssh_prod 54.179.137.72'
-alias s-prod-search_service='ssh_prod 54.169.103.35'
-alias s-test-insert_service='ssh_test 54.179.137.72'
-alias s='ssh_prod '
+alias s-prod-crontab='ssh-prod 54.251.34.87'
+alias s-prod-admin_service='ssh-prod 54.179.135.99'
+alias s-prod-insert_service='ssh-prod 54.179.137.72'
+alias s-prod-rm-insert_service='ssh-keygen -f "/root/.ssh/known_hosts" -R 54.179.137.72'
+alias s-prod-search_service='ssh-prod 54.169.103.35'
+alias s-prod-routing='ssh-prod 54.169.12.72'
+alias s-test-insert_service='ssh-test 54.179.137.72'
+alias s-test-crontab='ssh-test 54.251.34.87'
+alias s='ssh-prod '
+alias st='ssh-test '
 alias sshremove='sudo ssh-keygen -f "/root/.ssh/known_hosts" -R '
+
+alias ctrls='sshpass -p Vi"nze@1234$#$ ssh root@103.231.43.80'
+alias netmagic1='sshpass -p 15bG0b0y ssh root@180.179.236.11'
+alias netmagic2='sshpass -p X23EhC6G ssh root@180.179.236.10'
+alias netmagic3='sshpass -p A77ShrAK ssh root@180.179.236.12'
+
 #=== depeng only ==============================================================
 ### for depeng working PC only ###
 if [ -d '/home/depeng' ]; then
