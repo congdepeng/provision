@@ -205,6 +205,8 @@ alias b="byobu"
 # add -A : include removed files
 alias gm="g p && git pull && git add -A * && git commit -m 'auto commit at $(date)' && git push"
 alias gs="git status"
+#alias grm="git rm $(git ls-files --deleted)  "
+alias grm="git ls-files --deleted -z | xargs -0 git rm"
 # quick edit a file
 alias vgitignore="vim ~/.gitignore_global"
 alias vlocal_config="vim /service/config/service/local_config.properties"
