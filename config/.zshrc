@@ -180,11 +180,6 @@ alias s='ssh-prod '
 alias st='ssh-test '
 alias sshremove='sudo ssh-keygen -f "/root/.ssh/known_hosts" -R '
 
-alias ctrls='sshpass -p Vi"nze@1234$#$ ssh root@103.231.43.80'
-alias netmagic1='sshpass -p 15bG0b0y ssh root@180.179.236.11'
-alias netmagic2='sshpass -p X23EhC6G ssh root@180.179.236.10'
-alias netmagic3='sshpass -p A77ShrAK ssh root@180.179.236.12'
-
 #=== depeng only ==============================================================
 ### for depeng working PC only ###
 if [ -d '/home/depeng' ]; then
