@@ -126,7 +126,7 @@ alias py="bpython "
 alias b="byobu"
 #git 
 # add -A : include removed files
-alias gm="g p && git pull && git add -A * && git commit -m 'auto commit at $(date)' && git push"
+alias gm="git pull && git add -A * && git commit -m 'auto commit at $(date)' && git push"
 alias dg=" echo '$(date)' "
 alias dgx="ls | echo "
 alias gs="git status"
