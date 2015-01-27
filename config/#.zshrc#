@@ -38,7 +38,7 @@ alias upgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean
 alias aptrmlock='sudo rm /var/cache/apt/archives/lock && sudo rm /var/lib/dpkg/lock'
 alias psef="ps -ef|grep "
 # oh my zsh
-alias cc="vim ~/.zshrc"
+alias cc="e ~/.zshrc"
 alias vohmyzsh="vifm ~/.oh-my-zsh"
 alias ss="source ~/.zshrc"
 # keyboard mapping 
@@ -140,12 +140,15 @@ alias vwiki="vim ~/Dropbox/wiki"
 function mongo-config(){
    cp /ssd/script/mongodb_config_template.js /ssd/script/mongodb_config.js  
    echo ${vagrant_mongodb_ip:=$(docker-ip mongodb)}
-   echo $vagrant_mongodb_ip
+   echo $vvagrant_mongodb_ip
    sed -i "s/memcached_host/${vagrant_mongodb_ip}/"  /ssd/script/mongodb_config.js
    cat /ssd/script/mongodb_config.js|xclip -selection clipboard
    echo "mongod config had in clipboard"
-
    
+   cp /ssd/script/hosts_template /ssd/script/hosts
+   
+   cp /ssd/script/hosts /etc/hosts
+
 }
 # miscs
 alias sm="save_mark"
@@ -179,7 +182,6 @@ alias s-prod-insert_service='ssh-prod 54.179.137.72'
 alias s-prod-rm-insert_service='ssh-keygen -f "/root/.ssh/known_hosts" -R 54.179.137.72'
 alias s-prod-search_service='ssh-prod 54.169.103.35'
 alias s-prod-routing='ssh-prod 54.169.12.72'
-alias s-prod-demo-apps='ssh-prod 54.251.114.50'
 alias s-test-insert_service='ssh-test 54.179.137.72'
 alias s-test-crontab='ssh-test 54.251.34.87'
 alias s='ssh-prod '
@@ -192,6 +194,8 @@ export EDITOR="ec"
 #用e来快速启动emacs client
 alias emacs_deamon='emacs --deamon'
 alias e='emacsclient -t -a ""'
+alias vim='emacsclient -t -a ""'
+alias vi='emacsclient -t -a ""'
 # create new frame(GUI), not use Terminal frame  
 alias ex='emacsclient -c -a ""'
 
