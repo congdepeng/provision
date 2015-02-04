@@ -175,6 +175,7 @@ function ssh-test(){
 }
 alias s-prod-crontab='ssh-prod 54.251.34.87'
 alias s-prod-admin_service='ssh-prod 54.179.135.99'
+alias s-remove-admin_service='sudo ssh-keygen -f "/root/.ssh/known_hosts" -R 54.179.135.99'
 alias s-prod-insert_service='ssh-prod 54.179.137.72'
 alias s-prod-rm-insert_service='ssh-keygen -f "/root/.ssh/known_hosts" -R 54.179.137.72'
 alias s-prod-search_service='ssh-prod 54.169.103.35'
