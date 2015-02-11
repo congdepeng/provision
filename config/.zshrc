@@ -4,7 +4,7 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(scala sbt mvn zsh-syntax-highlighting colored-man python sudo tmux colorize command-not-found commond-aliases copydir copyfile docker github gitignore pip vagrant)
+plugins=(scala jekyll  sbt mvn zsh-syntax-highlighting colored-man python sudo tmux colorize command-not-found commond-aliases copydir copyfile docker github gitignore pip vagrant)
 source $ZSH/oh-my-zsh.sh
 ################################################################################
 #==============================================================================
@@ -175,7 +175,7 @@ function ssh-test(){
 }
 alias s-prod-crontab='ssh-prod 54.251.34.87'
 alias s-prod-admin_service='ssh-prod 54.179.135.99'
-alias s-remove-admin_service='sudo ssh-keygen -f "/root/.ssh/known_hosts" -R 54.179.135.99'
+alias s-remove-admin_service='ssh-keygen -f "/root/.ssh/known_hosts" -R 54.179.135.99'
 alias s-prod-insert_service='ssh-prod 54.179.137.72'
 alias s-prod-rm-insert_service='ssh-keygen -f "/root/.ssh/known_hosts" -R 54.179.137.72'
 alias s-prod-search_service='ssh-prod 54.169.103.35'
@@ -226,9 +226,14 @@ if [ -d '/home/depeng' ]; then
 fi
 
 
+
 source /ssd/github/provision/config/scala.sh
-export JAVA_HOME='/usr/lib/jvm/java-7-oracle/' 
 export H='/ssd'
+export JAVA_HOME='/usr/lib/jvm/java-7-oracle/' 
+export GRADLE_HOME=/ssd/artifact/gradle
+export PATH=$GRADLE_HOME/bin:$PATH
+echo $PATH
+
 
 function show_git_merge(){
 echo 'git fetch --progress --prune origin'
