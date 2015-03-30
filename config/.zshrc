@@ -144,6 +144,8 @@ function mongo-config(){
    sed -i "s/memcached_host/${vagrant_mongodb_ip}/"  /ssd/script/mongodb_config.js
    cat /ssd/script/mongodb_config.js|xclip -selection clipboard
    echo "mongod config had in clipboard"
+   echo s3 ${vagrant_s3:=$(docker-ip ambassador_s3)}
+   echo sqs ${vagrant_sqs:=$(docker-ip ambassador_sqs)}
 
    
 }
@@ -232,7 +234,6 @@ export H='/ssd'
 export JAVA_HOME='/usr/lib/jvm/java-7-oracle/' 
 export GRADLE_HOME=/ssd/artifact/gradle
 export PATH=$GRADLE_HOME/bin:$PATH
-echo $PATH
 
 
 function show_git_merge(){
